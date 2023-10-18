@@ -7,12 +7,27 @@
 
 import SwiftUI
 
-struct TaskListViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class TaskListViewModel: ObservableObject {
+    @Published var tasks: [Task] = []
+
+    // Добавление новой задачи
+    func addTask(name: String) {
+        tasks.append(Task(name: name, isCompleted: false))
+    }
+
+    // Удаление задачи по индексу
+    func removeTask(at index: Int) {
+        tasks.remove(at: index)
+    }
+
+    // Удаление задач по набору индексов
+    func removeTasks(at offsets: IndexSet) {
+        tasks.remove(atOffsets: offsets)
+    }
+
+    // Изменение статуса задачи на выполненную/невыполненную
+    func toggleTaskCompletion(at index: Int) {
+        tasks[index].isCompleted.toggle()
     }
 }
 
-#Preview {
-    TaskListViewModel()
-}

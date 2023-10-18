@@ -1,0 +1,364 @@
+diff --git a/TestToDoList.xcodeproj/project.pbxproj b/TestToDoList.xcodeproj/project.pbxproj
+index 91bd822..fb31149 100644
+--- a/TestToDoList.xcodeproj/project.pbxproj
++++ b/TestToDoList.xcodeproj/project.pbxproj
+@@ -7,18 +7,24 @@
+ 	objects = {
+ 
+ /* Begin PBXBuildFile section */
+-		E505CC772ADFC69E00FB1552 /* TestToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505CC762ADFC69E00FB1552 /* TestToDoListApp.swift */; };
+ 		E505CC792ADFC69E00FB1552 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505CC782ADFC69E00FB1552 /* ContentView.swift */; };
+ 		E505CC7B2ADFC69F00FB1552 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E505CC7A2ADFC69F00FB1552 /* Assets.xcassets */; };
+ 		E505CC7E2ADFC69F00FB1552 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E505CC7D2ADFC69F00FB1552 /* Preview Assets.xcassets */; };
++		E505CC8C2ADFC79900FB1552 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505CC8B2ADFC79900FB1552 /* TaskListViewModel.swift */; };
++		E505CC8E2ADFC7BC00FB1552 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505CC8D2ADFC7BC00FB1552 /* Task.swift */; };
++		E505CC922ADFC83C00FB1552 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505CC912ADFC83C00FB1552 /* TaskView.swift */; };
++		E505CC962ADFD78000FB1552 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E505CC952ADFD78000FB1552 /* TaskListView.swift */; };
+ /* End PBXBuildFile section */
+ 
+ /* Begin PBXFileReference section */
+ 		E505CC732ADFC69E00FB1552 /* TestToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+-		E505CC762ADFC69E00FB1552 /* TestToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestToDoListApp.swift; sourceTree = "<group>"; };
+ 		E505CC782ADFC69E00FB1552 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+ 		E505CC7A2ADFC69F00FB1552 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+ 		E505CC7D2ADFC69F00FB1552 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
++		E505CC8B2ADFC79900FB1552 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
++		E505CC8D2ADFC7BC00FB1552 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
++		E505CC912ADFC83C00FB1552 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
++		E505CC952ADFD78000FB1552 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+ /* End PBXFileReference section */
+ 
+ /* Begin PBXFrameworksBuildPhase section */
+@@ -51,8 +57,12 @@
+ 		E505CC752ADFC69E00FB1552 /* TestToDoList */ = {
+ 			isa = PBXGroup;
+ 			children = (
+-				E505CC762ADFC69E00FB1552 /* TestToDoListApp.swift */,
+-				E505CC782ADFC69E00FB1552 /* ContentView.swift */,
++				E505CC892ADFC75400FB1552 /* Application */,
++				E505CC882ADFC6DD00FB1552 /* Helpers */,
++				E505CC872ADFC6D800FB1552 /* Core */,
++				E505CC862ADFC6CF00FB1552 /* Controllers */,
++				E505CC852ADFC6C800FB1552 /* Models */,
++				E505CC842ADFC6C000FB1552 /* VIews */,
+ 				E505CC7A2ADFC69F00FB1552 /* Assets.xcassets */,
+ 				E505CC7C2ADFC69F00FB1552 /* Preview Content */,
+ 			);
+@@ -67,6 +77,53 @@
+ 			path = "Preview Content";
+ 			sourceTree = "<group>";
+ 		};
++		E505CC842ADFC6C000FB1552 /* VIews */ = {
++			isa = PBXGroup;
++			children = (
++				E505CC912ADFC83C00FB1552 /* TaskView.swift */,
++				E505CC952ADFD78000FB1552 /* TaskListView.swift */,
++			);
++			path = VIews;
++			sourceTree = "<group>";
++		};
++		E505CC852ADFC6C800FB1552 /* Models */ = {
++			isa = PBXGroup;
++			children = (
++				E505CC8D2ADFC7BC00FB1552 /* Task.swift */,
++			);
++			path = Models;
++			sourceTree = "<group>";
++		};
++		E505CC862ADFC6CF00FB1552 /* Controllers */ = {
++			isa = PBXGroup;
++			children = (
++				E505CC8B2ADFC79900FB1552 /* TaskListViewModel.swift */,
++			);
++			path = Controllers;
++			sourceTree = "<group>";
++		};
++		E505CC872ADFC6D800FB1552 /* Core */ = {
++			isa = PBXGroup;
++			children = (
++			);
++			path = Core;
++			sourceTree = "<group>";
++		};
++		E505CC882ADFC6DD00FB1552 /* Helpers */ = {
++			isa = PBXGroup;
++			children = (
++			);
++			path = Helpers;
++			sourceTree = "<group>";
++		};
++		E505CC892ADFC75400FB1552 /* Application */ = {
++			isa = PBXGroup;
++			children = (
++				E505CC782ADFC69E00FB1552 /* ContentView.swift */,
++			);
++			path = Application;
++			sourceTree = "<group>";
++		};
+ /* End PBXGroup section */
+ 
+ /* Begin PBXNativeTarget section */
+@@ -137,8 +194,11 @@
+ 			isa = PBXSourcesBuildPhase;
+ 			buildActionMask = 2147483647;
+ 			files = (
++				E505CC8E2ADFC7BC00FB1552 /* Task.swift in Sources */,
+ 				E505CC792ADFC69E00FB1552 /* ContentView.swift in Sources */,
+-				E505CC772ADFC69E00FB1552 /* TestToDoListApp.swift in Sources */,
++				E505CC922ADFC83C00FB1552 /* TaskView.swift in Sources */,
++				E505CC8C2ADFC79900FB1552 /* TaskListViewModel.swift in Sources */,
++				E505CC962ADFD78000FB1552 /* TaskListView.swift in Sources */,
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+ 		};
+@@ -272,7 +332,7 @@
+ 				CODE_SIGN_STYLE = Automatic;
+ 				CURRENT_PROJECT_VERSION = 1;
+ 				DEVELOPMENT_ASSET_PATHS = "\"TestToDoList/Preview Content\"";
+-				DEVELOPMENT_TEAM = 36X7S3WFJC;
++				DEVELOPMENT_TEAM = R884VRLUZ7;
+ 				ENABLE_PREVIEWS = YES;
+ 				GENERATE_INFOPLIST_FILE = YES;
+ 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+@@ -301,7 +361,7 @@
+ 				CODE_SIGN_STYLE = Automatic;
+ 				CURRENT_PROJECT_VERSION = 1;
+ 				DEVELOPMENT_ASSET_PATHS = "\"TestToDoList/Preview Content\"";
+-				DEVELOPMENT_TEAM = 36X7S3WFJC;
++				DEVELOPMENT_TEAM = R884VRLUZ7;
+ 				ENABLE_PREVIEWS = YES;
+ 				GENERATE_INFOPLIST_FILE = YES;
+ 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+diff --git a/TestToDoList/Application/ContentView.swift b/TestToDoList/Application/ContentView.swift
+index 7964b65..164c72a 100644
+--- a/TestToDoList/Application/ContentView.swift
++++ b/TestToDoList/Application/ContentView.swift
+@@ -7,18 +7,11 @@
+ 
+ import SwiftUI
+ 
+-struct ContentView: View {
+-    var body: some View {
+-        VStack {
+-            Image(systemName: "globe")
+-                .imageScale(.large)
+-                .foregroundStyle(.tint)
+-            Text("Hello, world!")
++@main
++struct TodoApp: App {
++    var body: some Scene {
++        WindowGroup {
++            TaskListView()
+         }
+-        .padding()
+     }
+ }
+-
+-#Preview {
+-    ContentView()
+-}
+diff --git a/TestToDoList/Controllers/TaskListViewModel.swift b/TestToDoList/Controllers/TaskListViewModel.swift
+index 60f367b..190a3ff 100644
+--- a/TestToDoList/Controllers/TaskListViewModel.swift
++++ b/TestToDoList/Controllers/TaskListViewModel.swift
+@@ -7,12 +7,27 @@
+ 
+ import SwiftUI
+ 
+-struct TaskListViewModel: View {
+-    var body: some View {
+-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
++class TaskListViewModel: ObservableObject {
++    @Published var tasks: [Task] = []
++
++    // Добавление новой задачи
++    func addTask(name: String) {
++        tasks.append(Task(name: name, isCompleted: false))
++    }
++
++    // Удаление задачи по индексу
++    func removeTask(at index: Int) {
++        tasks.remove(at: index)
+     }
+-}
+ 
+-#Preview {
+-    TaskListViewModel()
++    // Удаление задач по набору индексов
++    func removeTasks(at offsets: IndexSet) {
++        tasks.remove(atOffsets: offsets)
++    }
++
++    // Изменение статуса задачи на выполненную/невыполненную
++    func toggleTaskCompletion(at index: Int) {
++        tasks[index].isCompleted.toggle()
++    }
+ }
++
+diff --git a/TestToDoList/Models/Task.swift b/TestToDoList/Models/Task.swift
+index efd42d7..ba8136b 100644
+--- a/TestToDoList/Models/Task.swift
++++ b/TestToDoList/Models/Task.swift
+@@ -5,14 +5,10 @@
+ //  Created by Иван Марин on 18.10.2023.
+ //
+ 
+-import SwiftUI
++import Foundation
+ 
+-struct Task: View {
+-    var body: some View {
+-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+-    }
+-}
+-
+-#Preview {
+-    Task()
++struct Task: Identifiable {
++    let id = UUID()
++    var name: String
++    var isCompleted: Bool
+ }
+diff --git a/TestToDoList/VIews/TaskListView.swift b/TestToDoList/VIews/TaskListView.swift
+index 8c7671c..56f33d8 100644
+--- a/TestToDoList/VIews/TaskListView.swift
++++ b/TestToDoList/VIews/TaskListView.swift
+@@ -8,8 +8,85 @@
+ import SwiftUI
+ 
+ struct TaskListView: View {
++    @ObservedObject var taskListVM = TaskListViewModel()
++    @State private var rotation: Double = 0
++    @State private var editMode: EditMode = .inactive
++    
+     var body: some View {
+-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
++        NavigationView {
++            ZStack {
++                taskList
++            }
++            .navigationBarTitle("Список задач", displayMode: .large)
++            .navigationBarItems(leading: editButton, trailing: addButton)
++            .environment(\.editMode, $editMode) // <-- Добавьте эту строку
++        }
++    }
++    
++    private var taskList: some View {
++        List {
++            ForEach(taskListVM.tasks.indices, id: \.self) { index in
++                TaskView(task: $taskListVM.tasks[index])
++                    .swipeActions(edge: .trailing) {
++                        Button("Delete") {
++                            taskListVM.removeTask(at: index)
++                        }
++                        .tint(.red)
++                    }
++            }
++            .onDelete(perform: removeTasks)
++        }
++    }
++
++
++    
++    private func removeTasks(at offsets: IndexSet) {
++        taskListVM.removeTasks(at: offsets)
++    }
++    
++    private var editButton: some View {
++        EditButton()
++    }
++    
++    private var addButton: some View {
++        Button(action: {
++            addTask()
++            withAnimation {
++                rotation += 360
++            }
++        }) {
++            rotatingPlusIcon
++        }
++        .animation(.easeInOut(duration: 1.0), value: rotation)
++    }
++    
++    private var rotatingPlusIcon: some View {
++        Image(systemName: "plus")
++            .rotationEffect(.degrees(rotation))
++            .padding(5)
++            .foregroundColor(.white)
++            .background(Circle().fill(Color.gray))
++    }
++    
++    private func addTask() {
++        taskListVM.addTask(name: "Новая задача")
++    }
++    
++    private func binding(for task: Task) -> Binding<Task> {
++        guard let taskIndex = taskListVM.tasks.firstIndex(where: { $0.id == task.id }) else {
++            fatalError("Task not found")
++        }
++        return $taskListVM.tasks[taskIndex]
++    }
++}
++
++struct TaskCardModifier: ViewModifier {
++    func body(content: Content) -> some View {
++        content
++            .background(RoundedRectangle(cornerRadius: 10)
++                .fill(Color.white)
++                .shadow(color: .gray, radius: 2, x: 0, y: 2))
++            .padding(.horizontal, 16)
+     }
+ }
+ 
+diff --git a/TestToDoList/VIews/TaskView.swift b/TestToDoList/VIews/TaskView.swift
+index ea94cb5..fd96246 100644
+--- a/TestToDoList/VIews/TaskView.swift
++++ b/TestToDoList/VIews/TaskView.swift
+@@ -6,13 +6,45 @@
+ //
+ 
+ import SwiftUI
++import CoreHaptics
+ 
+ struct TaskView: View {
++    @Binding var task: Task
++    @State private var scale: CGFloat = 1.0
++
+     var body: some View {
+-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
++        HStack {
++            TextField("Задача", text: $task.name)
++            Spacer()
++            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
++                .font(.system(size: 30))
++                .scaleEffect(scale)
++                .onTapGesture {
++                    // Вибрация
++                    let generator = UIImpactFeedbackGenerator(style: .medium)
++                    generator.impactOccurred()
++                    
++                    // Анимация
++                    withAnimation {
++                        scale += 0.1
++                    }
++                    
++                    // Изменение статуса задачи
++                    task.isCompleted.toggle()
++                    
++                    // Возвращаем анимацию к исходному состоянию
++                    withAnimation {
++                        scale = 1.0
++                    }
++                }
++        }
++        .padding(.horizontal, 10)
++        .padding(.vertical, 15)
++        .background(Color.white)
+     }
+ }
+ 
++
+ #Preview {
+-    TaskView()
++    TaskView(task: .constant(Task(name: "Пример задачи", isCompleted: true)))
+ }
