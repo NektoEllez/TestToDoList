@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct TaskListView: View {
-    @ObservedObject var taskListVM = TaskListViewModel()
+    @ObservedObject var taskListVM: TaskListViewModel
     @State private var rotation: Double = 0
     @State private var editMode: EditMode = .inactive
     
@@ -17,29 +19,30 @@ struct TaskListView: View {
             ZStack {
                 taskList
             }
-            .navigationBarTitle("Список задач", displayMode: .large)
+            .navigationBarTitle(AppConstants.navBarTitle, displayMode: .large)
             .navigationBarItems(leading: editButton, trailing: addButton)
-            .environment(\.editMode, $editMode) // <-- Добавьте эту строку
+            .environment(\.editMode, $editMode)
         }
     }
     
     private var taskList: some View {
         List {
             ForEach(taskListVM.tasks.indices, id: \.self) { index in
-                TaskView(task: $taskListVM.tasks[index])
+                TaskView(taskListVM: taskListVM, task: taskListVM.tasks[index])
+                    .accessibilityElement(children: .ignore)     
+                    .accessibilityIdentifier("TaskCellIdentifier")
                     .swipeActions(edge: .trailing) {
-                        Button("Delete") {
+                        Button(AppConstants.deleteButtonTitle) {
                             taskListVM.removeTask(at: index)
                         }
+                        .accessibilityIdentifier("DeleteButtonIdentifier")
                         .tint(.red)
                     }
             }
-            .onDelete(perform: removeTasks)
+            .onDelete(perform: taskListVM.removeTasks)
         }
     }
 
-
-    
     private func removeTasks(at offsets: IndexSet) {
         taskListVM.removeTasks(at: offsets)
     }
@@ -58,21 +61,22 @@ struct TaskListView: View {
             rotatingPlusIcon
         }
         .animation(.easeInOut(duration: 1.0), value: rotation)
+        .accessibilityIdentifier("AddButtonIdentifier")
     }
     
     private var rotatingPlusIcon: some View {
-        Image(systemName: "plus")
-            .rotationEffect(.degrees(rotation))
-            .padding(5)
-            .foregroundColor(.white)
-            .background(Circle().fill(Color.gray))
-    }
+            Image(systemName: AppConstants.plusIcon)
+                .rotationEffect(.degrees(rotation))
+                .padding(5)
+                .foregroundColor(.white)
+                .background(Circle().fill(AppConstants.primaryColor))
+        }
     
     private func addTask() {
-        taskListVM.addTask(name: "Новая задача")
+        taskListVM.addTask(name: AppConstants.addTaskTitle)
     }
     
-    private func binding(for task: Task) -> Binding<Task> {
+    private func binding(for task: TaskEntity) -> Binding<TaskEntity> {
         guard let taskIndex = taskListVM.tasks.firstIndex(where: { $0.id == task.id }) else {
             fatalError("Task not found")
         }
@@ -88,8 +92,4 @@ struct TaskCardModifier: ViewModifier {
                 .shadow(color: .gray, radius: 2, x: 0, y: 2))
             .padding(.horizontal, 16)
     }
-}
-
-#Preview {
-    TaskListView()
 }
